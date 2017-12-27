@@ -1,5 +1,5 @@
 # markov-text
-This is a Python implementation of a Markov Text Generator.
+This is a Python3 implementation of a Markov Text Generator originally produced by [Codebox](https://github.com/codebox).
 
 A [Markov Text Generator](http://en.wikipedia.org/wiki/Markov_chain) can be used to randomly generate (somewhat) realistic sentences, using words from a source text. Words are joined together in sequence, with each new word being selected based on how often it follows the previous word in the source document.
 
@@ -12,11 +12,18 @@ The results are often just nonsense, but at times can be strangely poetic - the 
 > We've met, haven't they? Look, said Ford never have good time you are merely a receipt.  
 > The silence was delighted.
 
+### Python3 Version
+
+Changed to python3 by [mattallinson](https://github.com/mattallinson) using [2to3](https://docs.python.org/2/library/2to3.html). I also altered the structure of that I can use it as a module within other pieces of Python3 code, see example below. 
+
+## Command Line Useage
 ### Parsing
 
 <section>To use the utility, first find a source document (the larger the better) and save it as a UTF-8 encoded text file. Executing the utility in 'parse' mode, as shown, will create a .db file containing information about how frequently words follow other words in the text file.
 
-<pre>python markov.py parse &lt;name&gt; &lt;depth&gt; &lt;file&gt;
+Depending on the version installed on your machine, you may not need to use the 3 after python in the examples below. 
+
+<pre>python3 markov.py parse &lt;name&gt; &lt;depth&gt; &lt;file&gt;
 </pre>
 
 *   The `name` argument can be any non-empty value - this is just the name you have chosen for the source document
@@ -25,7 +32,7 @@ The results are often just nonsense, but at times can be strangely poetic - the 
 
 For example:
 
-<pre>python markov.py parse hitchhikers_guide 2 /path/to/hitchhikers.txt
+<pre>python3 markov.py parse hitchhikers_guide 2 /path/to/hitchhikers.txt
 </pre>
 
 The parsing process may take a while to complete, depending on the size of the input document.</section>
@@ -34,7 +41,7 @@ The parsing process may take a while to complete, depending on the size of the i
 
 <section>To generate new sentences, run the utility in 'generate' mode, using the name specified during the parse operation
 
-<pre>python markov.py gen &lt;name&gt; &lt;count&gt;
+<pre>python3 markov.py gen &lt;name&gt; &lt;count&gt;
 </pre>
 
 *   The `name` argument should match the name used with the earlier `parse` command
@@ -42,10 +49,15 @@ The parsing process may take a while to complete, depending on the size of the i
 
 For example:
 
-<pre>>python markov.py gen hitchhikers_guide 3
+<pre>>python3 markov.py gen hitchhikers_guide 3
 Look, I can't speak Vogon! You don't need to touch the water
 He frowned, then smiled, then tried to gauge the speed at which they were able to pick up hitch hikers
 The hatchway sealed itself tight, and all the streets around it
 </pre>
 
 </section>
+
+## Python3 Usage
+## Parsing
+
+Similar to the usage above, find a source document (the larger the better) and save it as a UTF-8 encoded text file. 
