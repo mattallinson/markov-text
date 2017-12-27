@@ -19,12 +19,12 @@ Changed to python3 by [mattallinson](https://github.com/mattallinson) using [2to
 ## Command Line Useage
 ### Parsing
 
-<section>To use the utility, first find a source document (the larger the better) and save it as a UTF-8 encoded text file. Executing the utility in 'parse' mode, as shown, will create a .db file containing information about how frequently words follow other words in the text file.
+To use the utility, first find a source document (the larger the better) and save it as a UTF-8 encoded text file. Executing the utility in 'parse' mode, as shown, will create a .db file containing information about how frequently words follow other words in the text file.
 
 Depending on the version installed on your machine, you may not need to use the 3 after python in the examples below. 
 
-<pre>python3 markov.py parse &lt;name&gt; &lt;depth&gt; &lt;file&gt;
-</pre>
+```$> python3 markov.py parse &lt;name&gt; &lt;depth&gt; &lt;file&gt;
+```
 
 *   The `name` argument can be any non-empty value - this is just the name you have chosen for the source document
 *   The `depth` argument is a numeric value (minimum 2) which determines how many of the previous words are used to select the next word. Normally a depth of 2 is used, meaning that each word is selected based only on the previous one. The larger the depth value, the more similar the generated sentences will be to those appearing in the source text. Beyond a certain depth the generated sentences will be identical to those appearing in the source.
@@ -32,36 +32,36 @@ Depending on the version installed on your machine, you may not need to use the 
 
 For example:
 
-<pre>$>python3 markov.py parse hitchhikers_guide 2 /path/to/hitchhikers.txt
+```
+$>python3 markov.py parse hitchhikers_guide 2 /path/to/hitchhikers.txt
 Database hitchikers_guide created from /path/to/hitchhikers.txt
-</pre>
+```
 
 The parsing process may take a while to complete, depending on the size of the input document.</section>
 
 ### Generating
 
-<section>To generate new sentences, run the utility in 'generate' mode, using the name specified during the parse operation
+To generate new sentences, run the utility in 'generate' mode, using the name specified during the parse operation
 
-<pre>python3 markov.py gen &lt;name&gt; &lt;count&gt;
-</pre>
+```$> python3 markov.py gen &lt;name&gt; &lt;count&gt;
+```
 
 *   The `name` argument should match the name used with the earlier `parse` command
 *   The `count` argument is a numeric value indicating how many sentences to generate
 
 For example:
 
-<pre>>python3 markov.py gen hitchhikers_guide 3
+```
+$>python3 markov.py gen hitchhikers_guide 3
 Look, I can't speak Vogon! You don't need to touch the water
 He frowned, then smiled, then tried to gauge the speed at which they were able to pick up hitch hikers
 The hatchway sealed itself tight, and all the streets around it
-</pre>
-
-</section>
+```
 
 ## Python3 Usage
 
 
-Similar to the usage above, find a source document (the larger the better) and save it as a UTF-8 encoded text file. Parsing, done by calling ```markov.parse(args)``` will produce a db file which can then be handed to ```markov.gen()``` which outputs a list of a string of each of the generated sentences.
+Similar to the usage above, find a source document (the larger the better) and save it as a UTF-8 encoded text file. Parsing, done by calling `markov.parse(name, depth. file)` will produce a db file which can then be handed to `markov.gen(name, count)` which outputs a list of a string of each of the generated sentences.
 
 ### Code examples
 
@@ -69,9 +69,8 @@ Similar to the usage above, find a source document (the larger the better) and s
 
 import markov
 
-markov.parse('hitchhikers_guide', 2 , '/path/to/hitchhikers.txt') #database name, depth, filepath to be parsed
-
-spam = markov.gen('hitchhikers_guide' 3) # database name, number of sentences required.
+markov.parse('hitchhikers_guide', 2 , '/path/to/hitchhikers.txt')
+spam = markov.gen('hitchhikers_guide' 3) 
 
 print(spam)
 
@@ -79,6 +78,6 @@ print(spam)
 Will output:
 
 ```
->>Database hitchikers_guide created from /path/to/hitchhikers.txt
->> ["Look, I can't speak Vogon! You don't need to touch the water", "He frowned, then smiled, then tried to gauge the speed at which they were able to pick up hitch hikers","The hatchway sealed itself tight, and all the streets around it"]
+>>> Database hitchikers_guide created from /path/to/hitchhikers.txt
+>>> ["Look, I can't speak Vogon! You don't need to touch the water", "He frowned, then smiled, then tried to gauge the speed at which they were able to pick up hitch hikers","The hatchway sealed itself tight, and all the streets around it"]
 ``` 
