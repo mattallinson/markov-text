@@ -11,7 +11,7 @@ class Generator:
 		total_next_words = sum(candidate_words.values())
 		i = self.rnd.randint(total_next_words)
 		t=0
-		for w in candidate_words.keys():
+		for w in list(candidate_words.keys()):
 			t += candidate_words[w]
 			if (i <= t):
 				return w

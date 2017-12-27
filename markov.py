@@ -1,8 +1,8 @@
-from markov_text3.db import Db
-from markov_text3.gen import Generator
-from markov_text3.parse import Parser
-from markov_text3.sql import Sql
-from markov_text3.rnd import Rnd
+from db import Db
+from gen import Generator
+from parse import Parser
+from sql import Sql
+from rnd import Rnd
 import sys
 import sqlite3
 import codecs
@@ -49,7 +49,8 @@ def main():
 	
 	elif mode == 'gen':
 		count = int(args[3])
-		print(generate(name, count))
+		for g in generate(name, count):
+			print(g)
 		
 	
 	else:

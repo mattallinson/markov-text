@@ -32,7 +32,8 @@ Depending on the version installed on your machine, you may not need to use the 
 
 For example:
 
-<pre>python3 markov.py parse hitchhikers_guide 2 /path/to/hitchhikers.txt
+<pre>$>python3 markov.py parse hitchhikers_guide 2 /path/to/hitchhikers.txt
+Database hitchikers_guide created from /path/to/hitchhikers.txt
 </pre>
 
 The parsing process may take a while to complete, depending on the size of the input document.</section>
@@ -58,6 +59,26 @@ The hatchway sealed itself tight, and all the streets around it
 </section>
 
 ## Python3 Usage
-## Parsing
 
-Similar to the usage above, find a source document (the larger the better) and save it as a UTF-8 encoded text file. 
+
+Similar to the usage above, find a source document (the larger the better) and save it as a UTF-8 encoded text file. Parsing, done by calling ```markov.parse(args)``` will produce a db file which can then be handed to ```markov.gen()``` which outputs a list of a string of each of the generated sentences.
+
+### Code examples
+
+```python
+
+import markov
+
+markov.parse('hitchhikers_guide', 2 , '/path/to/hitchhikers.txt') #database name, depth, filepath to be parsed
+
+spam = markov.gen('hitchhikers_guide' 3) # database name, number of sentences required.
+
+print(spam)
+
+```
+Will output:
+
+```
+>>Database hitchikers_guide created from /path/to/hitchhikers.txt
+>> ["Look, I can't speak Vogon! You don't need to touch the water", "He frowned, then smiled, then tried to gauge the speed at which they were able to pick up hitch hikers","The hatchway sealed itself tight, and all the streets around it"]
+``` 
