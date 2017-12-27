@@ -1,4 +1,4 @@
-# markov-text
+# markov_text3
 This is a Python3 implementation of a Markov Text Generator originally produced by [Codebox](https://github.com/codebox).
 
 A [Markov Text Generator](http://en.wikipedia.org/wiki/Markov_chain) can be used to randomly generate (somewhat) realistic sentences, using words from a source text. Words are joined together in sequence, with each new word being selected based on how often it follows the previous word in the source document.
@@ -23,7 +23,8 @@ To use the utility, first find a source document (the larger the better) and sav
 
 Depending on the version installed on your machine, you may not need to use the 3 after python in the examples below. 
 
-```$> python3 markov.py parse &lt;name&gt; &lt;depth&gt; &lt;file&gt;
+```
+$> python3 markov.py parse &lt;name&gt; &lt;depth&gt; &lt;file&gt;
 ```
 
 *   The `name` argument can be any non-empty value - this is just the name you have chosen for the source document
@@ -43,7 +44,8 @@ The parsing process may take a while to complete, depending on the size of the i
 
 To generate new sentences, run the utility in 'generate' mode, using the name specified during the parse operation
 
-```$> python3 markov.py gen &lt;name&gt; &lt;count&gt;
+```
+$> python3 markov.py gen &lt;name&gt; &lt;count&gt;
 ```
 
 *   The `name` argument should match the name used with the earlier `parse` command
